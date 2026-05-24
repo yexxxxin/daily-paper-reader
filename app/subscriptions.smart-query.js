@@ -1957,18 +1957,7 @@ window.SubscriptionsSmartQuery = (function () {
       hasIntentSection && modalState.intent_queries.some((item) => !isDraftSlot(item));
     const hasCandidates = hasKeywords || hasIntentQueries;
     const sourceChoices = renderPaperSourceChoices(modalState.paper_sources || []);
-    const isFirstRound = !(Array.isArray(modalState.requestHistory) && modalState.requestHistory.length);
-    const actionLabel = isFirstRound ? '生成候选' : '新增候选';
-    const tipSection = isFirstRound
-      ? `<div class="dpr-modal-group-title">
-           请先在下方输入你的检索想法
-         </div>
-         <div class="dpr-help-examples">
-           <div class="dpr-help-example">ex: 强化学习 符号回归</div>
-           <div class="dpr-help-example">ex: 请帮我去查找强化学习和符号回归相关的论文</div>
-           <div class="dpr-help-example">ex: 请帮我查找可解释的强化学习驱动符号回归方程发现论文</div>
-         </div>`
-      : '';
+    const actionLabel = '生成候选';
     const kwSection = hasKeywordSection
       ? `<div class="dpr-chat-result-block">
            <div class="dpr-modal-group-title">${buildSelectionTitle('keyword', '用于召回')}</div>
@@ -2000,15 +1989,25 @@ window.SubscriptionsSmartQuery = (function () {
         </div>
         <button class="arxiv-tool-btn" data-action="close">关闭</button>
       </div>
-      <div class="dpr-chat-result-module">
-        ${tipSection}
-        <div class="dpr-chat-result-content">${mixedHtml || emptyBlock}</div>
+      <div class="dpr-chat-meta-bar">
+        <label class="dpr-chat-label dpr-chat-inline-tag">
+          <span class="dpr-chat-label-text">标签</span>
+          <input id="dpr-chat-tag-input" type="text" placeholder="例如：symbolic-regression" value="${escapeHtml(modalState.inputTag || '')}" />
+        </label>
+        <label class="dpr-chat-label dpr-chat-inline-profile-desc">
+          <span class="dpr-chat-label-text">中文描述</span>
+          <input id="dpr-chat-required-desc" type="text" placeholder="用于日报展示，可由模型自动补全" value="${escapeHtml(modalState.inputDesc || '')}" />
+        </label>
+        <div class="dpr-chat-label dpr-chat-inline-sources">
+          <span class="dpr-chat-label-text">论文源</span>
+          <div class="dpr-paper-source-row">${sourceChoices}</div>
+        </div>
       </div>
       <div class="dpr-modal-actions dpr-chat-action-area">
-        <div class="dpr-chat-row">
+        <div class="dpr-chat-row dpr-chat-main-row">
           <label class="dpr-chat-label dpr-chat-inline-desc">
             <span class="dpr-chat-label-text">检索需求</span>
-            <textarea id="dpr-chat-desc-input" rows="2" placeholder="请帮我去查找强化学习和符号回归相关的论文">${escapeHtml(
+            <textarea id="dpr-chat-desc-input" rows="5" placeholder="请在这里像和 ChatGPT 对话一样描述你的检索需求。例如：&#10;请帮我查找强化学习和符号回归相关的论文&#10;请帮我查找可解释的强化学习驱动符号回归方程发现论文">${escapeHtml(
               modalState.inputDesc || '',
             )}</textarea>
           </label>
@@ -2023,19 +2022,10 @@ window.SubscriptionsSmartQuery = (function () {
         </div>
         <div id="dpr-chat-inline-status" class="dpr-chat-inline-status">${escapeHtml(modalState.chatStatus || '')}</div>
       </div>
+      <div class="dpr-chat-result-module">
+        <div class="dpr-chat-result-content">${mixedHtml || emptyBlock}</div>
+      </div>
       <div class="dpr-modal-actions dpr-modal-add-footer">
-        <label class="dpr-chat-label dpr-chat-inline-tag">
-          <span class="dpr-chat-label-text">标签</span>
-          <input id="dpr-chat-tag-input" type="text" placeholder="例如：SR" value="${escapeHtml(modalState.inputTag || '')}" />
-        </label>
-        <label class="dpr-chat-label dpr-chat-inline-desc">
-          <span class="dpr-chat-label-text">中文描述</span>
-          <input id="dpr-chat-required-desc" type="text" placeholder="请填写描述" value="${escapeHtml(modalState.inputDesc || '')}" />
-        </label>
-        <div class="dpr-chat-label dpr-chat-inline-sources">
-          <span class="dpr-chat-label-text">论文源</span>
-          <div class="dpr-paper-source-row">${sourceChoices}</div>
-        </div>
         <button class="arxiv-tool-btn" data-action="apply-chat" style="background:#2e7d32;color:#fff;" ${hasCandidates ? '' : 'disabled'}>
           保存查询
         </button>

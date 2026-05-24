@@ -4153,6 +4153,22 @@ article.markdown-section {
   align-items: flex-end;
 }
 
+.dpr-chat-meta-bar {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(180px, 1.2fr) minmax(220px, 1fr);
+  gap: 8px;
+  align-items: end;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #e2eaf6;
+  border-radius: 10px;
+  background: #fbfdff;
+}
+
+.dpr-chat-main-row {
+  align-items: stretch;
+}
+
 .dpr-chat-inline-tag {
   flex: 0 0 120px;
   min-width: 120px;
@@ -4168,8 +4184,9 @@ article.markdown-section {
 }
 
 .dpr-chat-inline-desc textarea {
-  height: 56px;
-  min-height: 56px;
+  height: 124px;
+  min-height: 124px;
+  line-height: 1.5;
 }
 
 .dpr-chat-send-btn {
@@ -4177,8 +4194,9 @@ article.markdown-section {
   background: #5dcf85 !important;
   color: #fff !important;
   padding: 6px 10px !important;
-  height: 56px;
-  min-height: 56px;
+  min-width: 92px;
+  height: auto;
+  min-height: 124px;
   border-radius: 6px;
   white-space: nowrap;
   margin: 0;
@@ -4189,10 +4207,14 @@ article.markdown-section {
 }
 
 @media (max-width: 700px) {
+  .dpr-chat-meta-bar {
+    grid-template-columns: 1fr;
+  }
   .dpr-chat-row {
     flex-wrap: wrap;
   }
   .dpr-chat-send-btn {
+    min-height: 40px;
     margin-left: auto;
   }
 }
@@ -4220,7 +4242,7 @@ article.markdown-section {
 }
 
 .dpr-chat-label textarea {
-  min-height: 56px;
+  min-height: 124px;
   resize: vertical;
 }
 
@@ -4320,6 +4342,7 @@ article.markdown-section {
 }
 
 .dpr-cloud-item {
+  position: relative;
   box-sizing: border-box;
   min-width: 0;
   border: 1px solid #d4dfef;
@@ -4368,8 +4391,12 @@ article.markdown-section {
 }
 
 .dpr-cloud-item input[type='checkbox'] {
-  margin-top: 1px;
-  accent-color: #2e7d32;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  margin: 0;
 }
 
 .dpr-cloud-item.dpr-choice-disabled input[type='checkbox'] {
