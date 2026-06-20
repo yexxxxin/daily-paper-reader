@@ -54,12 +54,26 @@ CONFERENCE_DEFAULTS: Dict[str, Dict[str, str]] = {
         "bm25_rpc": "match_neurips_openreview_papers_bm25",
         "vector_rpc_exact": "match_neurips_openreview_papers_exact",
     },
+    "iclr": {
+        "label": "ICLR",
+        "papers_table": "iclr_openreview_papers",
+        "bm25_rpc": "match_iclr_openreview_papers_bm25",
+        "vector_rpc_exact": "match_iclr_openreview_papers_exact",
+    },
+    "aaai": {
+        "label": "AAAI",
+        "papers_table": "aaai_papers",
+        "bm25_rpc": "match_aaai_papers_bm25",
+        "vector_rpc_exact": "match_aaai_papers_exact",
+    },
 }
 
 CONFERENCE_ALIASES = {
     "icml": "icml",
     "nips": "neurips",
     "neurips": "neurips",
+    "iclr": "iclr",
+    "aaai": "aaai",
 }
 
 
