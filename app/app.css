@@ -4046,29 +4046,29 @@ article.markdown-section {
 }
 
 .dpr-choice-year {
-  color: #2563eb;
+  color: #166534;
   font-weight: 750;
 }
 
 .dpr-choice-total-wrap {
-  color: #64748b;
+  color: #166534;
 }
 
 .dpr-choice-total {
-  color: #0f766e;
+  color: #166534;
   font-weight: 750;
 }
 
 .dpr-choice-pill.is-active .dpr-choice-year {
-  color: #dbeafe;
+  color: #dcfce7;
 }
 
 .dpr-choice-pill.is-active .dpr-choice-total-wrap {
-  color: rgba(255, 255, 255, 0.72);
+  color: #dcfce7;
 }
 
 .dpr-choice-pill.is-active .dpr-choice-total {
-  color: #bbf7d0;
+  color: #dcfce7;
 }
 
 .dpr-choice-pill.is-disabled .dpr-choice-year,
