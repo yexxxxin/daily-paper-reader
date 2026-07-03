@@ -900,13 +900,13 @@ function testSidebarPaperVisualStateCssContract() {
   const activeOrangeRule = cssRule(css, '.dpr-sidebar-paper-status-orange.is-active');
   const activeBadRule = cssRule(css, '.dpr-sidebar-paper-status-bad.is-active');
   assert.ok(/background:\s*#86efac/i.test(activeGoodRule));
-  assert.ok(/color:\s*#14532d/i.test(activeGoodRule));
+  assert.ok(/color:\s*#16a34a/i.test(activeGoodRule));
   assert.ok(/background:\s*#93c5fd/i.test(activeBlueRule));
-  assert.ok(/color:\s*#1e3a8a/i.test(activeBlueRule));
+  assert.ok(/color:\s*#2563eb/i.test(activeBlueRule));
   assert.ok(/background:\s*#c4b5fd/i.test(activeOrangeRule));
-  assert.ok(/color:\s*#4c1d95/i.test(activeOrangeRule));
+  assert.ok(/color:\s*#7c3aed/i.test(activeOrangeRule));
   assert.ok(/background:\s*#fca5a5/i.test(activeBadRule));
-  assert.ok(/color:\s*#7f1d1d/i.test(activeBadRule));
+  assert.ok(/color:\s*#dc2626/i.test(activeBadRule));
 }
 
 function testSidebarStickyHierarchyCssContract() {
